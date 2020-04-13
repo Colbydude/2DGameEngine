@@ -15,6 +15,9 @@ class Game
     public:
         Game();
         ~Game();
+
+        int ticksLastFrame;         /** The amount of ticks last frame. */
+
         void Destroy();
         void Initialize(int width, int height);
         bool IsRunning() const;

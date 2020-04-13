@@ -105,7 +105,7 @@ void Game::ProcessInput()
  */
 void Game::Render()
 {
-    SDL_SetRenderDrawColor(renderer, 100, 149, 237, 255);
+    SDL_SetRenderDrawColor(renderer, 100, 149, 237, 255); // Cornflower Blue. :)
     SDL_RenderClear(renderer);
 
     SDL_RenderPresent(renderer);
@@ -116,5 +116,20 @@ void Game::Render()
  */
 void Game::Update()
 {
-    //
+    // Sleep the execution until we reach the target frame time in ms.
+    int timeToWait = FRAME_TARGET_TIME - (SDL_GetTicks() - ticksLastFrame);
+
+    // Only call delay if we are too fast to process this frame.
+    if (timeToWait > 0 && timeToWait < FRAME_TARGET_TIME) {
+        SDL_Delay(timeToWait);
+    }
+
+    // Difference of ticks from last frame, converted to seconds.
+    float deltaTime = (SDL_GetTicks() - ticksLastFrame) / 1000.0f;
+
+    // Clamp deltaTime to a maximum value.
+    deltaTime = (deltaTime > 0.05f) ? 0.05 : deltaTime;
+
+    // Set ticks to be used in the next update loop.
+    ticksLastFrame = SDL_GetTicks();
 }
