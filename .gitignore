@@ -30,4 +30,9 @@
 *.exe
 *.out
 *.app
+game.*
 game
+
+# OS Files
+.DS_Store
+Thumbs.db
