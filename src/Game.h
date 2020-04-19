@@ -13,10 +13,10 @@ class Game
         SDL_Window *window;         /** The main SDL window. */
 
     public:
+        int ticksLastFrame;         /** The amount of ticks last frame. */
+
         Game();
         ~Game();
-
-        int ticksLastFrame;         /** The amount of ticks last frame. */
 
         void Destroy();
         void Initialize(int width, int height);
