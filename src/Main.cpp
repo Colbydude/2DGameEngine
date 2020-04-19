@@ -2,6 +2,12 @@
 #include "./Constants.h"
 #include "./Game.h"
 
+/**
+ * The main entrypoint for the application.
+ *
+ * @param argc The count of arguments.
+ * @param args The arguments passed in.
+ */
 int main(int argc, char *args[])
 {
     Game *game = new Game();
