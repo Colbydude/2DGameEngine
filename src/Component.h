@@ -3,6 +3,8 @@
 
 #include "./Entity.h"
 
+class Entity;
+
 class Component
 {
     public:

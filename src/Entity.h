@@ -6,6 +6,9 @@
 #include "./Component.h"
 #include "./EntityManager.h"
 
+class Component;
+class EntityManager;
+
 class Entity
 {
     private:
@@ -20,6 +23,7 @@ class Entity
         Entity(EntityManager&, std::string name);
 
         void Destroy();
+        bool IsActive() const;
         void Render();
         void Update(float deltaTime);
 };
