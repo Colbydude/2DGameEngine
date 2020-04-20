@@ -3,8 +3,11 @@
 
 #include <string>
 #include <vector>
-#include "./Entity.h"
 #include "./Component.h"
+#include "./Entity.h"
+
+class Component;
+class Entity;
 
 class EntityManager
 {
@@ -13,6 +16,7 @@ class EntityManager
 
     public:
         Entity& AddEntity(std::string entityName);
+        void ClearEntities();
         std::vector<Entity*> GetEntities() const;
         unsigned int GetEntityCount();
         bool HasNoEntities();

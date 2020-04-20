@@ -2,6 +2,9 @@
 #include "./Constants.h"
 #include "./Game.h"
 
+EntityManager manager;
+SDL_Renderer* Game::renderer;
+
 /**
  * Construct a new instance of the game.
  */
@@ -108,6 +111,8 @@ void Game::Render()
     SDL_SetRenderDrawColor(renderer, 100, 149, 237, 255); // Cornflower Blue. :)
     SDL_RenderClear(renderer);
 
+    manager.Render();
+
     SDL_RenderPresent(renderer);
 }
 
@@ -132,4 +137,6 @@ void Game::Update()
 
     // Set ticks to be used in the next update loop.
     ticksLastFrame = SDL_GetTicks();
+
+    manager.Update(deltaTime);
 }

@@ -4,16 +4,19 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
+#include "./Component.h"
+#include "./Entity.h"
+#include "./EntityManager.h"
 
 class Game
 {
     private:
-        bool isRunning;             /** Whether or not the game is running. */
-        SDL_Renderer *renderer;     /** The main SDL renderer. */
-        SDL_Window *window;         /** The main SDL window. */
+        bool isRunning;                     /** Whether or not the game is running. */
+        SDL_Window *window;                 /** The main SDL window. */
 
     public:
-        int ticksLastFrame;         /** The amount of ticks last frame. */
+        static SDL_Renderer *renderer;      /** The main SDL renderer. */
+        int ticksLastFrame;                 /** The amount of ticks last frame. */
 
         Game();
         ~Game();
