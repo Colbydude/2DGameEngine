@@ -24,6 +24,7 @@ class Game
         void Destroy();
         void Initialize(int width, int height);
         bool IsRunning() const;
+        void LoadContent(); // @TEMP
         void ProcessInput();
         void Render();
         void Update();

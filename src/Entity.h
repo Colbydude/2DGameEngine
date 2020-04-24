@@ -26,6 +26,18 @@ class Entity
         bool IsActive() const;
         void Render();
         void Update(float deltaTime);
+
+        template <typename T, typename... TArgs>
+        T& AddComponent(TArgs&&... args)
+        {
+            T* newComponent(new T(std::forward<TArgs>(args)...));
+
+            newComponent->owner = this;
+            components.emplace_back(newComponent);
+            newComponent->Initialize();
+
+            return *newComponent;
+        }
 };
 
 #endif

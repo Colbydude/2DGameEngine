@@ -1,4 +1,5 @@
 #include <iostream>
+#include "./Components/TransformComponent.h"
 #include "./Constants.h"
 #include "./Game.h"
 
@@ -63,6 +64,8 @@ void Game::Initialize(int width, int height)
         return;
     }
 
+    LoadContent();
+
     isRunning = true;
 
     return;
@@ -74,6 +77,13 @@ void Game::Initialize(int width, int height)
 bool Game::IsRunning() const
 {
     return this->isRunning;
+}
+
+void Game::LoadContent()
+{
+    // @TEMP
+    Entity &newEntity(manager.AddEntity("test"));
+    newEntity.AddComponent<TransformComponent>(0, 0, 20, 20, 32, 32, 1);
 }
 
 /**
@@ -110,6 +120,10 @@ void Game::Render()
 {
     SDL_SetRenderDrawColor(renderer, 100, 149, 237, 255); // Cornflower Blue. :)
     SDL_RenderClear(renderer);
+
+    if (manager.HasNoEntities()) {
+        return;
+    }
 
     manager.Render();
 
