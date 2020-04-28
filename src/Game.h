@@ -8,14 +8,17 @@
 #include "./Entity.h"
 #include "./EntityManager.h"
 
+class AssetManager;
+
 class Game
 {
     private:
         bool isRunning;                     /** Whether or not the game is running. */
-        SDL_Window *window;                 /** The main SDL window. */
+        SDL_Window* window;                 /** The main SDL window. */
 
     public:
-        static SDL_Renderer *renderer;      /** The main SDL renderer. */
+        static AssetManager* assetManager;  /** The global asset manager. */
+        static SDL_Renderer* renderer;      /** The main SDL renderer. */
         int ticksLastFrame;                 /** The amount of ticks last frame. */
 
         Game();
