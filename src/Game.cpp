@@ -1,9 +1,12 @@
 #include <iostream>
+#include "./AssetManager.h"
+#include "./Components/SpriteComponent.h"
 #include "./Components/TransformComponent.h"
 #include "./Constants.h"
 #include "./Game.h"
 
-EntityManager manager;
+EntityManager entityManager;
+AssetManager *Game::assetManager = new AssetManager(&entityManager);
 SDL_Renderer* Game::renderer;
 
 /**
@@ -82,8 +85,12 @@ bool Game::IsRunning() const
 void Game::LoadContent()
 {
     // @TEMP
-    Entity &newEntity(manager.AddEntity("test"));
+    std::string textureFilePath = "./assets/sprites/StanHelsing.png";
+    assetManager->AddTexture("test-sprite", textureFilePath.c_str());
+
+    Entity &newEntity(entityManager.AddEntity("test"));
     newEntity.AddComponent<TransformComponent>(0, 0, 20, 20, 32, 32, 1);
+    newEntity.AddComponent<SpriteComponent>("test-sprite");
 }
 
 /**
@@ -121,11 +128,12 @@ void Game::Render()
     SDL_SetRenderDrawColor(renderer, 100, 149, 237, 255); // Cornflower Blue. :)
     SDL_RenderClear(renderer);
 
-    if (manager.HasNoEntities()) {
+    if (entityManager.HasNoEntities())
+    {
         return;
     }
 
-    manager.Render();
+    entityManager.Render();
 
     SDL_RenderPresent(renderer);
 }
@@ -152,5 +160,5 @@ void Game::Update()
     // Set ticks to be used in the next update loop.
     ticksLastFrame = SDL_GetTicks();
 
-    manager.Update(deltaTime);
+    entityManager.Update(deltaTime);
 }
