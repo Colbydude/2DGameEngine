@@ -84,13 +84,11 @@ bool Game::IsRunning() const
 
 void Game::LoadContent()
 {
-    // @TEMP
-    std::string textureFilePath = "./assets/sprites/StanHelsing.png";
-    assetManager->AddTexture("test-sprite", textureFilePath.c_str());
+    assetManager->AddTexture("test-sprite", std::string("./assets/sprites/StanHelsing.png").c_str());
 
     Entity &newEntity(entityManager.AddEntity("test"));
     newEntity.AddComponent<TransformComponent>(0, 0, 20, 20, 32, 32, 1);
-    newEntity.AddComponent<SpriteComponent>("test-sprite");
+    newEntity.AddComponent<SpriteComponent>("test-sprite", 4, 4, false);
 }
 
 /**

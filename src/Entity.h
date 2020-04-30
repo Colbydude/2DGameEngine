@@ -55,6 +55,15 @@ class Entity
         {
             return static_cast<T*>(componentTypeMap[&typeid(T)]);
         }
+
+        /**
+         * Determine if the entity has a component of the given type.
+         */
+        template <typename T>
+        bool HasComponent() const
+        {
+            return componentTypeMap.count(&typeid(T)) > 0;
+        }
 };
 
 #endif

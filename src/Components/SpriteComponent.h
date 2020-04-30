@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include "./TransformComponent.h"
+#include "../Animation.h"
 #include "../AssetManager.h"
 #include "../Component.h"
 #include "../TextureManager.h"
@@ -10,7 +11,14 @@
 class SpriteComponent: public Component
 {
     private:
+        std::map<std::string, Animation> animations;
+        unsigned int animationIndex = 0;
+        int animationSpeed;
+        std::string currentAnimationName;
         SDL_Rect destinationRectangle;
+        bool isAnimated;
+        bool isFixed;
+        int numFrames;
         SDL_Rect sourceRectangle;
         SDL_Texture* texture;
         TransformComponent* transform;
@@ -18,9 +26,29 @@ class SpriteComponent: public Component
     public:
         SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;
 
-        SpriteComponent(const char* filePath)
+        SpriteComponent(std::string assetTextureId)
         {
-            SetTexture(filePath);
+            isAnimated = false;
+            isFixed = false;
+
+            SetTexture(assetTextureId);
+        }
+
+        SpriteComponent(std::string id, int numFrames, int animationSpeed, bool isFixed)
+        {
+            isAnimated = true;
+
+            this->animationSpeed = animationSpeed;
+            this->isFixed = isFixed;
+            this->numFrames = numFrames;
+
+            Animation singleAnimation = Animation(0, numFrames, animationSpeed);
+            animations.emplace("SingleAnimation", singleAnimation);
+            this->animationIndex = 0;
+            this->currentAnimationName = "SingleAnimation";
+
+            Play(this->currentAnimationName);
+            SetTexture(id);
         }
 
         void Initialize() override
@@ -31,6 +59,14 @@ class SpriteComponent: public Component
             sourceRectangle.y = 0;
             sourceRectangle.w = transform->width;
             sourceRectangle.h = transform->height;
+        }
+
+        void Play(std::string animationName)
+        {
+            numFrames = animations[animationName].numFrames;
+            animationIndex = animations[animationName].index;
+            animationSpeed = animations[animationName].animationSpeed;
+            currentAnimationName = animationName;
         }
 
         void Render() override
@@ -45,8 +81,14 @@ class SpriteComponent: public Component
 
         void Update(float deltaTime) override
         {
-            destinationRectangle.x = (int) transform->position.x;
-            destinationRectangle.y = (int) transform->position.y;
+            if (isAnimated) {
+                sourceRectangle.x = sourceRectangle.w * static_cast<int>((SDL_GetTicks() / animationSpeed) % numFrames);
+            }
+
+            sourceRectangle.y = animationIndex * transform->height;
+
+            destinationRectangle.x = static_cast<int>(transform->position.x);
+            destinationRectangle.y = static_cast<int>(transform->position.y);
             destinationRectangle.w = transform->width * transform->scale;
             destinationRectangle.h = transform->height * transform->scale;
         }
