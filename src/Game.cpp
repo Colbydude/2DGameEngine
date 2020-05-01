@@ -1,12 +1,12 @@
 #include <iostream>
-#include "./AssetManager.h"
-#include "./Components/SpriteComponent.h"
+#include "./Components/AnimatedSpriteComponent.h"
 #include "./Components/TransformComponent.h"
+#include "./AssetManager.h"
 #include "./Constants.h"
 #include "./Game.h"
 
 EntityManager entityManager;
-AssetManager *Game::assetManager = new AssetManager(&entityManager);
+AssetManager* Game::assetManager = new AssetManager(&entityManager);
 SDL_Renderer* Game::renderer;
 
 /**
@@ -84,11 +84,13 @@ bool Game::IsRunning() const
 
 void Game::LoadContent()
 {
+    // @TEMP
     assetManager->AddTexture("test-sprite", std::string("./assets/sprites/StanHelsing.png").c_str());
 
     Entity &newEntity(entityManager.AddEntity("test"));
     newEntity.AddComponent<TransformComponent>(0, 0, 20, 20, 32, 32, 1);
-    newEntity.AddComponent<SpriteComponent>("test-sprite", 4, 4, false);
+    AnimatedSpriteComponent* animComp = &newEntity.AddComponent<AnimatedSpriteComponent>();
+    animComp->SetAnimatedTexture("test-sprite");
 }
 
 /**
