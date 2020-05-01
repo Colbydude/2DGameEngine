@@ -1,5 +1,4 @@
-#ifndef TRANSFORMCOMPONENT_H
-#define TRANSFORMCOMPONENT_H
+#pragma once
 
 #include <SDL2/SDL.h>
 #include "../EntityManager.h"
@@ -30,5 +29,3 @@ class TransformComponent: public Component
             position.y += velocity.y * deltaTime;
         }
 };
-
-#endif

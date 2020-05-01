@@ -1,5 +1,4 @@
-#ifndef SPRITECOMPONENT_H
-#define SPRITECOMPONENT_H
+#pragma once
 
 #include <SDL2/SDL.h>
 #include "./TransformComponent.h"
@@ -51,5 +50,3 @@ class SpriteComponent: public Component
             destinationRectangle.h = transform->height * transform->scale;
         }
 };
-
-#endif

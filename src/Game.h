@@ -1,5 +1,4 @@
-#ifndef GAME_H
-#define GAME_H
+#pragma once
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -32,5 +31,3 @@ class Game
         void Render();
         void Update();
 };
-
-#endif

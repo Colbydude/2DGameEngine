@@ -1,5 +1,4 @@
-#ifndef COMPONENT_H
-#define COMPONENT_H
+#pragma once
 
 #include "./Entity.h"
 
@@ -16,5 +15,3 @@ class Component
         virtual void Render() {}
         virtual void Update(float deltaTime) {}
 };
-
-#endif;

@@ -1,5 +1,4 @@
-#ifndef ENTITY_H
-#define ENTITY_H
+#pragma once
 
 #include <map>
 #include <string>
@@ -65,5 +64,3 @@ class Entity
             return componentTypeMap.count(&typeid(T)) > 0;
         }
 };
-
-#endif
