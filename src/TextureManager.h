@@ -1,5 +1,4 @@
-#ifndef TEXTUREMANAGER_H
-#define TEXTUREMANAGER_H
+#pragma once
 
 #include "./Game.h"
 
@@ -12,5 +11,3 @@ class TextureManager
         );
         static SDL_Texture* LoadTexture(const char* fileName);
 };
-
-#endif

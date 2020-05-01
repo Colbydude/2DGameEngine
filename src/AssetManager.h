@@ -1,5 +1,4 @@
-#ifndef ASSETMANAGER_H
-#define ASSETMANAGER_H
+#pragma once
 
 #include <map>
 #include <string>
@@ -20,5 +19,3 @@ class AssetManager
         void ClearAssets();
         SDL_Texture* GetTexture(std::string textureId);
 };
-
-#endif;

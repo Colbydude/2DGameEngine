@@ -2,6 +2,7 @@
 
 build:
 	g++ -w -std=c++17 \
+	./src/**/*.cpp \
 	./src/*.cpp \
 	-o game \
 	-lSDL2 \

@@ -1,5 +1,4 @@
-#ifndef ENTITYMANAGER_H
-#define ENTITYMANAGER_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -23,5 +22,3 @@ class EntityManager
         void Render();
         void Update(float deltaTime);
 };
-
-#endif

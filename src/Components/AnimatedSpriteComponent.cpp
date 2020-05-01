@@ -37,7 +37,7 @@ void AnimatedSpriteComponent::Render()
     TextureManager::Draw(texture, srcRect, destRect, spriteFlip);
 }
 
-void AnimatedSpriteComponent::SetAnimatedTexture(std::string assetTextureId, bool playOnStart = true)
+void AnimatedSpriteComponent::SetAnimatedTexture(std::string assetTextureId, bool playOnStart)
 {
     texture = Game::assetManager->GetTexture(assetTextureId);
     SetAnimationFrames();

@@ -1,5 +1,4 @@
-#ifndef ANIMATEDSPRITECOMPONENT_H
-#define ANIMATEDSPRITECOMPONENT_H
+#pragma once
 
 #include <SDL2/SDL.h>
 #include "../Component.h"
@@ -46,5 +45,3 @@ class AnimatedSpriteComponent : public Component
         void Stop();
         void Update(float deltaTime) override;
 };
-
-#endif
