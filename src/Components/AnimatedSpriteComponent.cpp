@@ -3,23 +3,36 @@
 #include "../AssetManager.h"
 #include "../TextureManager.h"
 
+/**
+ * Construct a new instance of the animated sprite component.
+ */
 AnimatedSpriteComponent::AnimatedSpriteComponent()
 {
     //
 }
 
+/**
+ * Initialize the animated sprite with default settings.
+ */
 void AnimatedSpriteComponent::Initialize()
 {
-    texture = Game::assetManager->GetTexture("default");
     transform = owner->GetComponent<TransformComponent>();
+
     srcRect.x = 0;
     srcRect.y = 0;
     srcRect.w = transform->width;
     srcRect.h = transform->height;
+
     currentIndex = 0;
     animSpeed = 60;
 }
 
+/**
+ * Play the sprite animation.
+ *
+ * @param animIndex The Y-axis index on the sprite sheet.
+ * @param animSpeed The animation speed.
+ */
 void AnimatedSpriteComponent::Play(unsigned int animIndex, int animSpeed)
 {
     currentIndex = animIndex;
@@ -27,23 +40,38 @@ void AnimatedSpriteComponent::Play(unsigned int animIndex, int animSpeed)
     isPlaying = true;
 }
 
+/**
+ * Pause the sprite animation.
+ */
 void AnimatedSpriteComponent::Pause()
 {
     isPlaying = false;
 }
 
+/**
+ * Render the animated sprite.
+ */
 void AnimatedSpriteComponent::Render()
 {
-    TextureManager::Draw(texture, srcRect, destRect, spriteFlip);
+    TextureManager::Render(texture, srcRect, destRect, spriteFlip);
 }
 
-void AnimatedSpriteComponent::SetAnimatedTexture(std::string assetTextureId, bool playOnStart)
+/**
+ * Sets the texture for the component.
+ *
+ * @param assetTextureId The texture identifier.
+ * @param playOnStart Whether or not to start animating immediately.
+ */
+void AnimatedSpriteComponent::SetAnimatedTexture(string assetTextureId, bool playOnStart)
 {
     texture = Game::assetManager->GetTexture(assetTextureId);
     SetAnimationFrames();
     isPlaying = playOnStart;
 }
 
+/**
+ * Set the animations on the sprite based on the sheet width and height.
+ */
 void AnimatedSpriteComponent::SetAnimationFrames()
 {
     int textureWidth;
@@ -57,12 +85,20 @@ void AnimatedSpriteComponent::SetAnimationFrames()
     }
 }
 
+/**
+ * Stop the animation and reset the timer.
+ */
 void AnimatedSpriteComponent::Stop()
 {
     isPlaying = false;
     animTimer = 0;
 }
 
+/**
+ * Animate the sprite if playing.
+ *
+ * @param deltaTime
+ */
 void AnimatedSpriteComponent::Update(float deltaTime)
 {
     if (isPlaying) {

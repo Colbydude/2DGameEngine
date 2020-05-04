@@ -85,7 +85,7 @@ bool Game::IsRunning() const
 void Game::LoadContent()
 {
     // @TEMP
-    assetManager->AddTexture("test-sprite", std::string("./assets/sprites/StanHelsing.png").c_str());
+    assetManager->AddTexture("test-sprite", string("./assets/sprites/StanHelsing.png").c_str());
 
     Entity &newEntity(entityManager.AddEntity("test"));
     newEntity.AddComponent<TransformComponent>(0, 0, 20, 20, 32, 32, 1);

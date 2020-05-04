@@ -1,14 +1,14 @@
 #include "./TextureManager.h"
 
 /**
- * Draw a texture with the given information.
+ * Render a texture with the given information.
  *
  * @param texture The source texture.
  * @param sourceRectangle A pointer to the source rectangle, or NULL for the entire texture.
  * @param destinationRectangle A pointer to the destination rectangle, or NULL for the entire rendering target.
  * @param flip An SDL_RendererFlip value stating which flipping actions should be performed on the texture.
  */
-void TextureManager::Draw(
+void TextureManager::Render(
     SDL_Texture* texture, SDL_Rect sourceRectangle,
     SDL_Rect destinationRectangle, SDL_RendererFlip flip
 )
