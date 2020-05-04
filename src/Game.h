@@ -3,9 +3,9 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
+#include "./Managers/EntityManager.h"
 #include "./Component.h"
 #include "./Entity.h"
-#include "./EntityManager.h"
 #include "./Types.h"
 
 class AssetManager;
