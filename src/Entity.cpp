@@ -1,9 +1,10 @@
 #include "./Entity.h"
+#include "./Types.h"
 
 /**
  * Construct a new instance of the entity.
  *
- * @param manager
+ * @param manager Reference to the entity manager.
  */
 Entity::Entity(EntityManager& manager): manager(manager)
 {
@@ -13,10 +14,10 @@ Entity::Entity(EntityManager& manager): manager(manager)
 /**
  * Construct a new instance of the entity
  *
- * @param manager
+ * @param manager Reference to the entity manager.
  * @param name The name to identify the entity with.
  */
-Entity::Entity(EntityManager &manager, std::string name) : manager(manager), name(name)
+Entity::Entity(EntityManager &manager, string name) : manager(manager), name(name)
 {
     this->isActive = true;
 }

@@ -5,23 +5,32 @@
 #include "../AssetManager.h"
 #include "../Component.h"
 #include "../TextureManager.h"
+#include "../Types.h"
 
 class SpriteComponent: public Component
 {
     private:
-        SDL_Rect destinationRectangle;
-        SDL_Rect sourceRectangle;
-        SDL_Texture* texture;
-        TransformComponent* transform;
+        SDL_Rect destinationRectangle;                      /** The destination rectangle to render to. */
+        SDL_Rect sourceRectangle;                           /** The source rectangle on the texture. */
+        SDL_Texture* texture;                               /** The sprite texture. */
+        TransformComponent* transform;                      /** The companion transform component. */
 
     public:
-        SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;
+        SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;        /** The render flip state. */
 
-        SpriteComponent(std::string assetTextureId)
+        /**
+         * Construct a new instance of the sprite component.
+         *
+         * @param assetTextureId The texture identifier.
+         */
+        SpriteComponent(string assetTextureId)
         {
             SetTexture(assetTextureId);
         }
 
+        /**
+         * Initialize the sprite with default settings.
+         */
         void Initialize() override
         {
             transform = owner->GetComponent<TransformComponent>();
@@ -32,16 +41,27 @@ class SpriteComponent: public Component
             sourceRectangle.h = transform->height;
         }
 
+        /**
+         * Render the sprite.
+         */
         void Render() override
         {
-            TextureManager::Draw(texture, sourceRectangle, destinationRectangle, spriteFlip);
+            TextureManager::Render(texture, sourceRectangle, destinationRectangle, spriteFlip);
         }
 
-        void SetTexture(std::string assetTextureId)
+        /**
+         * Set the texture for the sprite.
+         */
+        void SetTexture(string assetTextureId)
         {
             texture = Game::assetManager->GetTexture(assetTextureId);
         }
 
+        /**
+         * Update the sprite.
+         *
+         * @param deltaTime
+         */
         void Update(float deltaTime) override
         {
             destinationRectangle.x = static_cast<int>(transform->position.x);

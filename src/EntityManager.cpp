@@ -5,7 +5,7 @@
  *
  * @param entityName The name to identify the entity with.
  */
-Entity& EntityManager::AddEntity(std::string entityName)
+Entity& EntityManager::AddEntity(string entityName)
 {
     Entity *entity = new Entity(*this, entityName);
     entities.emplace_back(entity);

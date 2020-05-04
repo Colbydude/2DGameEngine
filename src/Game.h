@@ -6,6 +6,7 @@
 #include "./Component.h"
 #include "./Entity.h"
 #include "./EntityManager.h"
+#include "./Types.h"
 
 class AssetManager;
 

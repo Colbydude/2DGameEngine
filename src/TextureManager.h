@@ -5,7 +5,7 @@
 class TextureManager
 {
     public:
-        static void Draw(
+        static void Render(
             SDL_Texture* texture, SDL_Rect sourceRectangle,
             SDL_Rect destinationRectangle, SDL_RendererFlip flip
         );

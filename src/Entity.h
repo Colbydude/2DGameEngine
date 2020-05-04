@@ -1,10 +1,9 @@
 #pragma once
 
 #include <map>
-#include <string>
-#include <vector>
 #include "./Component.h"
 #include "./EntityManager.h"
+#include "./Types.h"
 
 class Component;
 class EntityManager;
@@ -18,10 +17,10 @@ class Entity
         std::map<const std::type_info*, Component*> componentTypeMap;   /** Map of components corresponding types. */
 
     public:
-        std::string name;                                               /** Identifier for the entity. */
+        string name;                                                    /** Identifier for the entity. */
 
         Entity(EntityManager& manager);
-        Entity(EntityManager&, std::string name);
+        Entity(EntityManager&, string name);
 
         void Destroy();
         bool IsActive() const;

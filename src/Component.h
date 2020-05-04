@@ -7,7 +7,7 @@ class Entity;
 class Component
 {
     public:
-        Entity* owner;              /** The entity this component belongs to. */
+        Entity* owner;              /** Pointer to the entity this component belongs to. */
 
         virtual ~Component() {}
 
