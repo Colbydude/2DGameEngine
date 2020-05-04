@@ -3,7 +3,7 @@
 #include <map>
 #include "./EntityManager.h"
 #include "./TextureManager.h"
-#include "./Types.h"
+#include "../Types.h"
 
 class AssetManager
 {

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SDL2/SDL.h>
-#include "../EntityManager.h"
+#include "../Managers/EntityManager.h"
 #include "../Game.h"
 #include "../Types.h"
 

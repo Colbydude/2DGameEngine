@@ -1,7 +1,7 @@
 #include <iostream>
 #include "./Components/AnimatedSpriteComponent.h"
 #include "./Components/TransformComponent.h"
-#include "./AssetManager.h"
+#include "./Managers/AssetManager.h"
 #include "./Constants.h"
 #include "./Game.h"
 

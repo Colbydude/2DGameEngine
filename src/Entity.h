@@ -1,8 +1,8 @@
 #pragma once
 
 #include <map>
+#include "./Managers/EntityManager.h"
 #include "./Component.h"
-#include "./EntityManager.h"
 #include "./Types.h"
 
 class Component;

@@ -2,9 +2,9 @@
 
 #include <SDL2/SDL.h>
 #include "./TransformComponent.h"
-#include "../AssetManager.h"
+#include "../Managers/AssetManager.h"
+#include "../Managers/TextureManager.h"
 #include "../Component.h"
-#include "../TextureManager.h"
 #include "../Types.h"
 
 class SpriteComponent: public Component

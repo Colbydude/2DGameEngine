@@ -1,9 +1,9 @@
 #pragma once
 
 #include <vector>
-#include "./Component.h"
-#include "./Entity.h"
-#include "./Types.h"
+#include "../Component.h"
+#include "../Entity.h"
+#include "../Types.h"
 
 class Component;
 class Entity;

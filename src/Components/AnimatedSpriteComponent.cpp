@@ -1,7 +1,7 @@
 #include "./AnimatedSpriteComponent.h"
 #include "./TransformComponent.h"
-#include "../AssetManager.h"
-#include "../TextureManager.h"
+#include "../Managers/AssetManager.h"
+#include "../Managers/TextureManager.h"
 
 /**
  * Construct a new instance of the animated sprite component.
