@@ -18,6 +18,7 @@ class Game
 
     public:
         static AssetManager* assetManager;  /** The global asset manager. */
+        static SDL_Event event;             /** */
         static SDL_Renderer* renderer;      /** The main SDL renderer. */
         int ticksLastFrame;                 /** The amount of ticks last frame. */
 
