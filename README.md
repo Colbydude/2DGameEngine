@@ -7,15 +7,18 @@ Libraries are managed through [vcpkg](https://docs.microsoft.com/en-us/cpp/build
 
 | Library    | Version  |
 |------------|----------|
-| glm        | 0.9.9.8  | 
-| sdl2       | 2.0.12   | 
-| sdl2-image | 2.0.5    | 
+| glm        | 0.9.9.8  |
+| sdl2       | 2.0.12   |
+| sdl2-image | 2.0.5    |
 | sdl2-mixer | 2.0.4-9  |
-| sdl2-ttf   | 2.0.15-3 | 
+| sdl2-ttf   | 2.0.15-3 |
 
 ## Compiling
 
+**NOTE:** Currently only tested on macOS.
+
 ```sh
+$ mkdir -p build
 $ cd build
 $ cmake .. "-DCMAKE_TOOLCHAIN_FILE=<path to vcpkg>/scripts/buildsystems/vcpkg.cmake"
 $ make
