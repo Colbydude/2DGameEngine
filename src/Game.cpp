@@ -1,5 +1,6 @@
 #include <iostream>
 #include "./Components/AnimatedSpriteComponent.h"
+#include "./Components/KeyboardControlComponent.h"
 #include "./Components/TransformComponent.h"
 #include "./Managers/AssetManager.h"
 #include "./Constants.h"
@@ -7,6 +8,7 @@
 
 EntityManager entityManager;
 AssetManager* Game::assetManager = new AssetManager(&entityManager);
+SDL_Event Game::event;
 SDL_Renderer* Game::renderer;
 
 /**
@@ -91,6 +93,7 @@ void Game::LoadContent()
     newEntity.AddComponent<TransformComponent>(0, 0, 20, 20, 32, 32, 1);
     AnimatedSpriteComponent* animComp = &newEntity.AddComponent<AnimatedSpriteComponent>();
     animComp->SetAnimatedTexture("test-sprite");
+    newEntity.AddComponent<KeyboardControlComponent>("left", "right", "z", "x");
 }
 
 /**
@@ -98,7 +101,6 @@ void Game::LoadContent()
  */
 void Game::ProcessInput()
 {
-    SDL_Event event;
     SDL_PollEvent(&event);
 
     switch (event.type) {
