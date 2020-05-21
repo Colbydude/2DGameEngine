@@ -1,11 +1,73 @@
 #include "./InputManager.h"
 
 /**
+ * Get the current keyboard state.
+ */
+Uint8 InputManager::GetCurrentKeyboardState()
+{
+    return *currentKeyboardState;
+}
+
+/**
  * Initialize the InputManager and set the default action maps.
  */
 void InputManager::Initialize()
 {
     ResetActionMaps();
+}
+
+/**
+ * If mapped gamepad button or key is pressed.
+ *
+ * @param actionMap
+ */
+bool InputManager::IsActionMapPressed(ActionMap* actionMap)
+{
+    for (int i = 0; i < actionMap->keyboardKeys.size(); i++) {
+        if (IsKeyPressed(actionMap->keyboardKeys[i])) {
+            return true;
+        }
+    }
+
+    // @TODO Gamepad actions.
+
+    return false;
+}
+
+/**
+ * If mapped gamepad button or key is released this frame.
+ *
+ * @param actionMap
+ */
+bool InputManager::IsActionMapReleased(ActionMap* actionMap)
+{
+    for (int i = 0; i < actionMap->keyboardKeys.size(); i++) {
+        if (IsKeyReleased(actionMap->keyboardKeys[i])) {
+            return true;
+        }
+    }
+
+    // @TODO Gamepad actions.
+
+    return false;
+}
+
+/**
+ * If mapped gamepad button or key is pressed this frame.
+ *
+ * @param actionMap
+ */
+bool InputManager::IsActionMapTriggered(ActionMap* actionMap)
+{
+    for (int i = 0; i < actionMap->keyboardKeys.size(); i++) {
+        if (IsKeyTriggered(actionMap->keyboardKeys[i])) {
+            return true;
+        }
+    }
+
+    // @TODO Gamepad actions.
+
+    return false;
 }
 
 /**
@@ -15,8 +77,17 @@ void InputManager::Initialize()
  */
 bool InputManager::IsActionPressed(Action action)
 {
-    // @TODO
-    return false;
+    return IsActionMapPressed(actionMaps[(int) action]);
+}
+
+/**
+ * If the action is released this frame.
+ *
+ * @param action
+ */
+bool InputManager::IsActionReleased(Action action)
+{
+    return IsActionMapReleased(actionMaps[(int) action]);
 }
 
 /**
@@ -26,8 +97,7 @@ bool InputManager::IsActionPressed(Action action)
  */
 bool InputManager::IsActionTriggered(Action action)
 {
-    // @TODO
-    return false;
+    return IsActionMapTriggered(actionMaps[(int) action]);
 }
 
 /**
@@ -38,6 +108,16 @@ bool InputManager::IsActionTriggered(Action action)
 bool InputManager::IsKeyPressed(SDL_Scancode scancode)
 {
     return currentKeyboardState[scancode];
+}
+
+/**
+ * If the key is released this frame.
+ *
+ * @param scancode
+ */
+bool InputManager::IsKeyReleased(SDL_Scancode scancode)
+{
+    return (!currentKeyboardState[scancode] && prevKeyboardState[scancode]);
 }
 
 /**

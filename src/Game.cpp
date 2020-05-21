@@ -86,7 +86,7 @@ void Game::LoadContent()
     assetManager->AddTexture("test-sprite", string("./assets/sprites/StanHelsing.png").c_str());
 
     Entity &newEntity(entityManager.AddEntity("test"));
-    newEntity.AddComponent<TransformComponent>(0, 0, 20, 20, 32, 32, 1);
+    newEntity.AddComponent<TransformComponent>(0, 0, 0, 0, 32, 32, 1);
     AnimatedSpriteComponent* animComp = &newEntity.AddComponent<AnimatedSpriteComponent>();
     animComp->SetAnimatedTexture("test-sprite");
     newEntity.AddComponent<PlayerControlComponent>();
