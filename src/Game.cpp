@@ -64,6 +64,8 @@ void Game::Initialize(int width, int height)
         return;
     }
 
+    SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
     InputManager::Initialize();
     LoadContent();
 

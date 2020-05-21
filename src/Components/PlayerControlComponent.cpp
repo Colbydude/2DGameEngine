@@ -23,16 +23,14 @@ void PlayerControlComponent::Update(float deltaTime)
     holdR = InputManager::IsActionPressed(Action::Right);
 
     // Cancel opposing keys
-    if (holdL == 1 && holdR == 1)
-    {
+    if (holdL == 1 && holdR == 1) {
         holdL = 0;
         holdR = 0;
     }
 
     int moveX = (holdR - holdL) * moveSpeed;
 
-    if (moveX != 0)
-    {
+    if (moveX != 0) {
         transform->position.x += moveX * deltaTime;
     }
 }
