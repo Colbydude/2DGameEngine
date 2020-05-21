@@ -4,6 +4,7 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include "./Managers/EntityManager.h"
+#include "./Managers/InputManager.h"
 #include "./Component.h"
 #include "./Entity.h"
 #include "./Types.h"
@@ -18,7 +19,7 @@ class Game
 
     public:
         static AssetManager* assetManager;  /** The global asset manager. */
-        static SDL_Event event;             /** */
+        static InputManager* inputManager;  /** The global input manager. */
         static SDL_Renderer* renderer;      /** The main SDL renderer. */
         int ticksLastFrame;                 /** The amount of ticks last frame. */
 

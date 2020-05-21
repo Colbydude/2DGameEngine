@@ -1,14 +1,14 @@
 #include <iostream>
 #include "./Components/AnimatedSpriteComponent.h"
-#include "./Components/KeyboardControlComponent.h"
+#include "./Components/PlayerControlComponent.h"
 #include "./Components/TransformComponent.h"
 #include "./Managers/AssetManager.h"
+#include "./Managers/InputManager.h"
 #include "./Constants.h"
 #include "./Game.h"
 
 EntityManager entityManager;
 AssetManager* Game::assetManager = new AssetManager(&entityManager);
-SDL_Event Game::event;
 SDL_Renderer* Game::renderer;
 
 /**
@@ -17,11 +17,6 @@ SDL_Renderer* Game::renderer;
 Game::Game()
 {
     this->isRunning = false;
-}
-
-Game::~Game()
-{
-    //
 }
 
 /**
@@ -69,6 +64,7 @@ void Game::Initialize(int width, int height)
         return;
     }
 
+    InputManager::Initialize();
     LoadContent();
 
     isRunning = true;
@@ -93,7 +89,7 @@ void Game::LoadContent()
     newEntity.AddComponent<TransformComponent>(0, 0, 20, 20, 32, 32, 1);
     AnimatedSpriteComponent* animComp = &newEntity.AddComponent<AnimatedSpriteComponent>();
     animComp->SetAnimatedTexture("test-sprite");
-    newEntity.AddComponent<KeyboardControlComponent>("left", "right", "z", "x");
+    newEntity.AddComponent<PlayerControlComponent>();
 }
 
 /**
@@ -101,6 +97,7 @@ void Game::LoadContent()
  */
 void Game::ProcessInput()
 {
+    SDL_Event event;
     SDL_PollEvent(&event);
 
     switch (event.type) {
@@ -120,6 +117,8 @@ void Game::ProcessInput()
             break;
         }
     }
+
+    InputManager::Update();
 }
 
 /**
