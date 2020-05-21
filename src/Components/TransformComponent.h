@@ -41,7 +41,12 @@ class TransformComponent: public Component
          */
         void Update(float deltaTime) override
         {
-            position.x += velocity.x * deltaTime;
-            position.y += velocity.y * deltaTime;
+            if (velocity.x != 0) {
+                position.x += velocity.x * deltaTime;
+            }
+
+            if (velocity.y != 0) {
+                position.y += velocity.y * deltaTime;
+            }
         }
 };

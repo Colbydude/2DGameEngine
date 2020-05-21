@@ -10,31 +10,13 @@
 
 class PlayerControlComponent: public Component
 {
+    private:
+        int moveSpeed = 12;             /** Movement speed. */
+
     public:
-        TransformComponent *transform;
-        SpriteComponent *sprite;
+        TransformComponent *transform;  /** The companion transform component. */
+        SpriteComponent *sprite;        /** The companion sprite component. */
 
-        /**
-         * Initialize the player control component.
-         */
-        void Initialize() override
-        {
-            sprite = owner->GetComponent<SpriteComponent>();
-            transform = owner->GetComponent<TransformComponent>();
-        }
-
-        /**
-         * Very basic player movement.
-         *
-         * @param deltaTime
-         */
-        void Update(float deltaTime) override
-        {
-            if (InputManager::IsKeyPressed(SDL_SCANCODE_LEFT)) {
-                transform->velocity.x = -10;
-            }
-            if (InputManager::IsKeyPressed(SDL_SCANCODE_RIGHT)) {
-                transform->velocity.x = 10;
-            }
-        }
+        void Initialize() override;
+        void Update(float deltaTime) override;
 };

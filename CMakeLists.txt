@@ -15,6 +15,7 @@ find_package(sdl2-ttf REQUIRED)
 # Full source files list
 set(SOURCE_FILES ${SOURCE_FILES}
     src/Components/AnimatedSpriteComponent.cpp
+    src/Components/PlayerControlComponent.cpp
     src/Managers/AssetManager.cpp
     src/Managers/EntityManager.cpp
     src/Managers/InputManager.cpp
