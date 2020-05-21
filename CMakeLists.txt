@@ -17,6 +17,7 @@ set(SOURCE_FILES ${SOURCE_FILES}
     src/Components/AnimatedSpriteComponent.cpp
     src/Managers/AssetManager.cpp
     src/Managers/EntityManager.cpp
+    src/Managers/InputManager.cpp
     src/Managers/TextureManager.cpp
     src/Entity.cpp
     src/Game.cpp
