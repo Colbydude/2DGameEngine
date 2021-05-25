@@ -26,11 +26,14 @@ set(SOURCE_FILES ${SOURCE_FILES}
 
 # Executable
 add_executable(${PROJECT_NAME} ${SOURCE_FILES} src/Main.cpp)
-target_link_libraries(${PROJECT_NAME} PRIVATE glm)
-target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2main SDL2::SDL2-static)
-target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2_image)
-target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2_mixer)
-target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2_ttf)
+target_link_libraries(${PROJECT_NAME}
+    PRIVATE
+        glm::glm
+        SDL2::SDL2main SDL2::SDL2-static
+        SDL2::SDL2_image
+        SDL2::SDL2_mixer
+        SDL2::SDL2_ttf
+)
 
 # Copy assets to build directory
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD

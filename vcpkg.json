@@ -1,0 +1,11 @@
+{
+    "name": "colbydude-2dgameengine",
+    "version": "0.0.1",
+    "dependencies": [
+        "glm",
+        "sdl2",
+        "sdl2-image",
+        "sdl2-mixer",
+        "sdl2-ttf"
+    ]
+}
